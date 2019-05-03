@@ -10,7 +10,9 @@ RUN apt install -y make wget file pinentry-tty ca-certificates lbzip2 bzip2 gcc
 
 RUN mkdir -p /app
 WORKDIR /app/
-RUN wget -c https://github.com/OpenSC/OpenSC/releases/download/0.19.0/opensc-0.19.0.tar.gz
+# RUN wget -c https://github.com/OpenSC/OpenSC/releases/download/0.19.0/opensc-0.19.0.tar.gz
+RUN apt install unzip
+RUN wget -c https://github.com/OpenSC/OpenSC/archive/master.zip
 ADD build.sh /app/
 
 
