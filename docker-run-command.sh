@@ -6,9 +6,12 @@ if [ "$EUID" != "0" ]; then
 fi
 
 echo === Closing working pcscd on host
+systemctl stop pcscd pcscd.socket
 killall pcscd scdaemon
 
-DR="docker run -it  --privileged -v /dev:/dev --net=host -v `readlink -f .`:/app  opensc:latest"
+DR="docker run -it  --privileged -v /dev:/dev --net=host \
+    -v ${PWD}:/app  \
+    opensc:latest"
 if [ -z "$1" ]; then
     # no arguments - run shell
     ${DR} /bin/bash

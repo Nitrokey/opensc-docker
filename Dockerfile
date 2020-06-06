@@ -12,11 +12,11 @@ RUN mkdir -p /app
 WORKDIR /app/
 # RUN wget -c https://github.com/OpenSC/OpenSC/releases/download/0.19.0/opensc-0.19.0.tar.gz
 RUN apt install unzip
-RUN wget -c https://github.com/OpenSC/OpenSC/archive/master.zip
-ADD build.sh /app/
+#RUN wget -c https://github.com/OpenSC/OpenSC/archive/master.zip
+ADD Makefile /app/
 
 
-RUN cd /app && make -f build.sh
+#RUN cd /app && make
 ADD ./start-within-container.sh /app/
 
 # RUN gpg -K
